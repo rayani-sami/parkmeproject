@@ -39,13 +39,24 @@ route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::resource('places', PlaceController::class)->names('admin.places');
         Route::get('delete-place/{id}','PlaceController@delete');
         Route::resource('users', UserController::class)->names('admin.users');
+        route::post('/update-user-status','UserController@UpdateUserStatus');
+        Route::get('delete-users/{id}','UserController@delete');
         Route::resource('reservations', ReservationController::class)->names('admin.reservations');
         Route::resource('payments', PaymentController::class)->names('admin.payments');
         Route::put('/payments/{payment}/status', [PaymentController::class, 'updateStatus'])->name('admin.payments.updateStatus');
+
+
+
+        /****************settings */
+
+
+
+        Route::match(['get','post'],'/update-admin-details','AdminController@updateAdminDetails');
+         Route::match(['get','post'],'update-admin-password','AdminController@updateAdminPassword');
     });
 
 
-
+/************************get all users */
 
 
     });

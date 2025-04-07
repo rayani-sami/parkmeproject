@@ -26,7 +26,7 @@
                     <span class="nav-text">gerer utilisateurs </span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="{{url('admin/get-users')}}">les utilisateurs</a></li>
+                    <li><a href="{{route('admin.users.index')}}">les utilisateurs</a></li>
 
 
                 </ul>
@@ -37,7 +37,7 @@
                 <span class="nav-text">gerer parking </span>
             </a>
             <ul aria-expanded="false">
-                <li><a href="{{route('admin.parkings.index')}}">les messages</a></li>
+                <li><a href="{{route('admin.parkings.index')}}">parkings</a></li>
 
 
             </ul>

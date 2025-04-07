@@ -101,13 +101,13 @@ class AdminController extends Controller
         // echo "<pre>"; print_r($data);die;
               $rules= [
                   'admin_name' => 'required|regex:/^[\pL\s\-]+$/u',
-                  'admin_mobile' => 'required|numeric'
+
                     ];
 
                     $messages=[
                       'admin_name.required' => 'name  is required',
 
-                      'admin_mobile.required' => 'mobile is required'
+
                   ];
 
                     $this->validate($request,$rules,$messages);
@@ -146,7 +146,7 @@ class AdminController extends Controller
                        }
                     }
 
-              Admin::where('id',Auth::guard('isadmin')->user()->id)->update(['name'=>$data ['admin_name'],'mobile'=>$data ['admin_mobile'],'image'=>$imagePath]);
+              Admin::where('id',Auth::guard('admin')->user()->id)->update(['firstname'=>$data ['admin_name'],'lastname'=>$data ['admin_lastname']]);
               return redirect ()->back()->with('success_message','admin details has updated successfully');
           }
           return view('admin.settings.update_admin_detail');

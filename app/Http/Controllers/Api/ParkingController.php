@@ -12,6 +12,7 @@ class ParkingController extends Controller
      public function index()
      {
          $parkings = Parking::all();
+         dd( $parkings);
          return response()->json($parkings);
      }
 
