@@ -33,8 +33,11 @@ Route::get('/parkings/{id}/places', [ParkingController::class, 'showPlaces']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/reservations', [ReservationController::class, 'store']);
     Route::put('/reservations/{id}/cancel', [ReservationController::class, 'cancel']);
+    Route::get('/histo', [ReservationController::class, 'index']);
     Route::post('/payments', [PaymentController::class, 'store']);
     Route::put('/payments/{id}/status', [PaymentController::class, 'updateStatus']);
+
+    Route::put('/profile', [UserController::class, 'updateProfile']);
     /*
     Route::get('/users/{userId}/notifications', [NotificationController::class, 'index']);
     Route::put('/notifications/{id}/read', [NotificationController::class, 'markAsRead']);

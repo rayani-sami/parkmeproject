@@ -11,8 +11,8 @@ class ParkingController extends Controller
      // Récupérer la liste des parkings
      public function index()
      {
-         $parkings = Parking::all();
-         dd( $parkings);
+         $parkings = Parking::with('places')->get();
+       //  dd( $parkings);
          return response()->json($parkings);
      }
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mar. 11 mars 2025 à 00:43
+-- Généré le : sam. 19 avr. 2025 à 00:42
 -- Version du serveur : 10.4.27-MariaDB
 -- Version de PHP : 8.2.0
 
@@ -43,7 +43,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `firstname`, `lastname`, `email`, `password`, `image`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin', 'admin@gmail.com', '$2y$10$DcuEDNB/52BbZcNzksfbW..TlUMcIJYVDlc0B/7Qg4WWSwYi82n1C', '', NULL, NULL);
+(1, 'admsssin', 'adminssssss', 'admin@gmail.com', '$2y$12$iX3mOgHUP6MNYFQYbkNio.QLEBcsxwQgK8WitrG0FLQhtrXCvEey2', '', NULL, '2025-04-07 19:48:41');
 
 -- --------------------------------------------------------
 
@@ -131,7 +131,9 @@ CREATE TABLE `parkings` (
 INSERT INTO `parkings` (`id`, `name`, `address`, `total_spaces`, `available_spaces`, `latitude`, `longitude`, `created_at`, `updated_at`) VALUES
 (4, 'beng', 'Médenine', 20, 12, '33.13780000', '11.21970000', '2025-03-10 02:55:15', '2025-03-10 02:55:15'),
 (5, 'tunis', 'tunis', 30, 2, '36.80650000', '10.18150000', '2025-03-10 02:57:25', '2025-03-10 02:57:25'),
-(6, 'développeur web', '4160 Temescal Canyon Rd', 25, 25, '33.13780000', '10.18150000', '2025-03-10 04:08:02', '2025-03-10 04:08:02');
+(6, 'développeur web', '4160 Temescal Canyon Rd', 25, 25, '33.13780000', '10.18150000', '2025-03-10 04:08:02', '2025-03-10 04:08:02'),
+(7, 'park', 'Médenine', 100, 100, '36.80650000', '11.21970000', '2025-03-23 00:26:53', '2025-03-23 00:26:53'),
+(8, 'test', 'bengerden medenine', 100, 20, '33.13780000', '11.21970000', '2025-03-23 00:51:18', '2025-03-23 00:51:18');
 
 -- --------------------------------------------------------
 
@@ -181,6 +183,14 @@ CREATE TABLE `personal_access_tokens` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Déchargement des données de la table `personal_access_tokens`
+--
+
+INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `expires_at`, `created_at`, `updated_at`) VALUES
+(1, 'App\\Models\\User', 1, 'auth_token', '14ee5d8c9530e38c63b369c8a384502bc54acdb465de9a0b19d645ca5e205bbc', '[\"*\"]', NULL, NULL, '2025-03-11 00:08:42', '2025-03-11 00:08:42'),
+(2, 'App\\Models\\User', 2, 'auth_token', '919ac08fa4a5c72244e6c5fa09415a7608e43eec6dd8b32716e5558f92dcb65b', '[\"*\"]', '2025-04-18 22:31:18', NULL, '2025-04-18 21:59:20', '2025-04-18 22:31:18');
+
 -- --------------------------------------------------------
 
 --
@@ -201,7 +211,7 @@ CREATE TABLE `places` (
 --
 
 INSERT INTO `places` (`id`, `parking_id`, `number`, `is_available`, `created_at`, `updated_at`) VALUES
-(3, 4, '25', 1, '2025-03-10 03:02:29', '2025-03-10 03:02:29');
+(3, 4, '25', 0, '2025-03-10 03:02:29', '2025-04-18 22:14:05');
 
 -- --------------------------------------------------------
 
@@ -220,6 +230,13 @@ CREATE TABLE `reservations` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Déchargement des données de la table `reservations`
+--
+
+INSERT INTO `reservations` (`id`, `user_id`, `place_id`, `start_time`, `end_time`, `status`, `created_at`, `updated_at`) VALUES
+(1, 2, 3, '2025-04-20 10:00:00', '2025-04-20 12:00:00', 'active', '2025-04-18 22:14:05', '2025-04-18 22:14:05');
+
 -- --------------------------------------------------------
 
 --
@@ -232,10 +249,18 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) NOT NULL,
+  `status` tinyint(4) NOT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
+(2, 'Nouveautest', 'sami2@gmail.com', NULL, '$2y$12$b6GWzJexN32d6Xdm6TYlSOOihH6O3JSf9vEkrBmZXVe8BFcBeqPrm', 1, NULL, NULL, '2025-04-18 22:31:19');
 
 --
 -- Index pour les tables déchargées
@@ -348,7 +373,7 @@ ALTER TABLE `notifications`
 -- AUTO_INCREMENT pour la table `parkings`
 --
 ALTER TABLE `parkings`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pour la table `payments`
@@ -360,7 +385,7 @@ ALTER TABLE `payments`
 -- AUTO_INCREMENT pour la table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `places`
@@ -372,13 +397,13 @@ ALTER TABLE `places`
 -- AUTO_INCREMENT pour la table `reservations`
 --
 ALTER TABLE `reservations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Contraintes pour les tables déchargées
