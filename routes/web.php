@@ -20,8 +20,8 @@ use App\Http\Controllers\Admin\ReservationController;
 |
 */
 
-Route::get('/admin/dashboard', function () {
-    return view('welcome');
+Route::get('/', function () {
+    return redirect('/admin/login');
 });
 
 

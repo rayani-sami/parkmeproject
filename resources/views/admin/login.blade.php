@@ -51,7 +51,7 @@
 							<div class="col-xl-6 col-md-6">
 								<div class="sign-in-your py-4 px-2">
 									<h4 class="fs-20">Sign in your account</h4>
-									<span>Welcome back! Login with your data that you entered<br> during registration</span>
+									<span>Welcome back! Login with your data that you entered</span>
                                     @if (session()->has('error_message'))
                                     <script>
                                       toastr.error("{{Session::get('error_message');}}")
