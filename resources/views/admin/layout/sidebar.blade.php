@@ -53,8 +53,20 @@
 
 
         </ul>
-    </li>
+         </li>
 
+
+        <li>
+            <a class="has-arrow ai-icon" href="javascript:void(0);" aria-expanded="false">
+            <i class="flaticon-381-layer-1"></i>
+            <span class="nav-text">gerer reservation </span>
+        </a>
+        <ul aria-expanded="false">
+            <li><a href="{{route('admin.reservations.index')}}"> liste de reservation </a></li>
+
+
+        </ul>
+         </li>
         </ul>
     </div>
 </div>

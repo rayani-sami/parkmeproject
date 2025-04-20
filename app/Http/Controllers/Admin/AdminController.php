@@ -19,9 +19,6 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        $user=Auth::guard('admin')->user()->id;
-        dd($user);
-
         $totalParkings = Parking::count();
         $totalUsers = User::count();
         $totalReservations = Reservation::count();

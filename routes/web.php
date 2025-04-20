@@ -41,7 +41,11 @@ route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::resource('users', UserController::class)->names('admin.users');
         route::post('/update-user-status','UserController@UpdateUserStatus');
         Route::get('delete-users/{id}','UserController@delete');
+
+
+
         Route::resource('reservations', ReservationController::class)->names('admin.reservations');
+        Route::get('delete-reservation/{id}','ReservationController@delete');
         Route::resource('payments', PaymentController::class)->names('admin.payments');
         Route::put('/payments/{payment}/status', [PaymentController::class, 'updateStatus'])->name('admin.payments.updateStatus');
 
